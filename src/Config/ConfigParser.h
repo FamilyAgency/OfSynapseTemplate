@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "Config.h"
+#include "Config/Config.h"
 #include "ofxJSON.h"
 
 namespace synapse

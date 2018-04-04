@@ -1,4 +1,4 @@
-#include "TCPAppSender.h"
+#include "Network/TCP/TCPAppSender.h"
 using namespace synapse;
 
 TCPAppSender::TCPAppSender()

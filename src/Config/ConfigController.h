@@ -1,8 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "Config.h"
-#include "ConfigLoader.h"
-#include "ConfigParser.h"
+#include "Config/Config.h"
+#include "Config/ConfigLoader.h"
+#include "Config/ConfigParser.h"
 namespace synapse
 {
 	class ConfigController

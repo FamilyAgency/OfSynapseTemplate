@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
-#include "TCPClient.h"
-#include "Config.h"
+#include "Network/TCP/TCPClient.h"
+#include "Config/Config.h"
 #include "ofxNetwork\src\ofxNetwork.h"
 #include "ofxJSON.h"
 

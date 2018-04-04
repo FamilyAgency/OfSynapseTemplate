@@ -1,8 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "Config.h"
+#include "Config/Config.h"
 #include "ofxNetwork\src\ofxNetwork.h"
-#include "Timer.h"
+#include "Utilities/Timer.h"
 
 namespace synapse
 {

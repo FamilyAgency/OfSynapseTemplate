@@ -1,4 +1,4 @@
-#include "ConfigLoader.h"
+#include "Config/ConfigLoader.h"
 using namespace synapse;
 
 ConfigLoader::ConfigLoader()

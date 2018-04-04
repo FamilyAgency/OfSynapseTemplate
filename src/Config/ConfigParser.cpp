@@ -1,4 +1,4 @@
-#include "ConfigParser.h"
+#include "Config/ConfigParser.h"
 using namespace synapse;
 
 ConfigParser::ConfigParser()

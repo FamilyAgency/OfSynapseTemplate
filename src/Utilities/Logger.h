@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
-#include "Config.h"
+#include "Config/Config.h"
+#include "Utilities/Tools.h"
 
 namespace synapse
 {
@@ -25,8 +26,7 @@ namespace synapse
 		string logPath;
 		ofFile logFile;
 		ofBuffer logBuffer;
-		string getDate();
-		const string dateFormat = "[%Y.%m.%d %H:%M:%S] ";
+		//const string dateFormat = "[%Y.%m.%d %H:%M:%S] ";
 	};
 
 	inline Logger& logger()

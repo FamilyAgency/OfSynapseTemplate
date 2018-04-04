@@ -1,4 +1,4 @@
-#include "TCPClient.h"
+#include "Network/TCP/TCPClient.h"
 using namespace synapse;
 
 TCPClient::TCPClient():

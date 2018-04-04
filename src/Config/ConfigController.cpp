@@ -1,4 +1,4 @@
-#include "ConfigController.h"
+#include "Config/ConfigController.h"
 using namespace synapse;
 
 ConfigController::ConfigController()

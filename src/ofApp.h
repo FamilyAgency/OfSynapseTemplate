@@ -1,11 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ConfigController.h"
-#include "Config.h"
-#include "Logger.h"
-#include "TCPClient.h"
-#include "TCPAppSender.h"
+#include "Config/ConfigController.h"
+#include "Config/Config.h"
+#include "Utilities/Logger.h"
+#include "Network/TCP/TCPAppSender.h"
+#include "Network/TCP/TCPClient.h"
+
 
 using namespace synapse;
 class ofApp : public ofBaseApp

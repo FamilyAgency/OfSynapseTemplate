@@ -1,4 +1,4 @@
-#include "Logger.h"
+#include "Utilities/Logger.h"
 using namespace synapse;
 
 Logger& Logger::getInstance()
@@ -45,20 +45,9 @@ void Logger::log(LogType type, const string& message)
 	default:
 		break;
 	}
-	//bool doesFileExist = logFile.exists();
-	//cout << doesFileExist << endl;
-	
-	logFile << getDate() << logTypeText << message << endl;
-}
 
-string Logger::getDate()
-{
-	time_t rawtime = time(0);
-	struct tm * timeinfo;
-	char buffer[80];
-	timeinfo = localtime(&rawtime);
-	strftime(buffer, 80, dateFormat.c_str(), timeinfo);
-	return buffer;
+	
+	logFile << tools().getDate() << logTypeText << message << endl;
 }
 
 
