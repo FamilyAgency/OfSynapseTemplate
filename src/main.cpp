@@ -9,6 +9,4 @@ int main(int argc, char *argv[])
 	ofApp *app = new ofApp();
 	app->setCommandLineArgs(vector<string>(argv, argv + argc));
 	ofRunApp(app);
-
-
 }
