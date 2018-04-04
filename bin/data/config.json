@@ -1,0 +1,20 @@
+{
+  "version" : "1.0",
+  "appTypeId": 1,
+  "appId": 1,
+  "logPath": "B:\\FamilyAgencyBack\\OfTemplateSynapse\\bin\\data\\logs\\log.txt",
+  "socketServer":
+  {
+      "ip" : "192.168.88.100",
+      "port": 8085,
+      "autoConnect": false,
+      "delimeter" :"[/TCP]"
+  },
+  "commands":
+  [
+    {"metaName": "clientAuth", "action": "{\"command\":{\"type\":\"clientAuth\"}}"},
+    {"metaName": "keepAlive", "action": "{\"command\":{\"type\":\"keepAlive\",\"enabled\":true,\"ms\":1000}}"},
+    {"metaName": "changeColor", "action": "{\"command\":{\"type\":\"changeColor\",\"color\":\"0xff0000\"}}"},
+    {"metaName": "sayHello", "action": "{\"command\":\"sayHello\"}"}
+  ]
+}

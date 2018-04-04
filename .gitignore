@@ -9,3 +9,4 @@ obj/
 .vs/
 ipch/
 bin/
+!bin/data/config.json
