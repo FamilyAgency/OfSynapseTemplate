@@ -11,16 +11,24 @@ ConfigLoader::~ConfigLoader()
 
 }
 
-void ConfigLoader::load(const string& param)
+void ConfigLoader::load(const string& param, LoadType type)
 {
-	if (param.length() > 0)
+	if (type == LoadType::LocalFile)
 	{
-		setConfigPath(param);
-	}
-	configBuffer = ofBufferFromFile(configPath);
-	string configText = configBuffer.getText();
-	loadSuccessEvent.notify(this, configText);
-	//@TODO: notify file error
+		if (param.length() > 0)
+		{
+			setConfigPath(param);
+			configBuffer = ofBufferFromFile(configPath);
+			string configText = configBuffer.getText();
+			loadSuccessEvent.notify(this, configText);
+		}
+		else
+		{
+
+		}
+
+		//@TODO: notify file error
+	}	
 }
 
 void ConfigLoader::setConfigPath(const string& param)

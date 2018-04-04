@@ -27,18 +27,16 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-
-	bool isConfigReady = false;
-
+	
 	void setCommandLineArgs(const vector<string>& args);
 	string configPath = "B:\\FamilyAgencyBack\\OfTemplateSynapse\\bin\\data\\config.json";
-
+	
+	ConfigPtr configPtr;
 	ConfigController configController;
 	void onConfigSuccess();
 	void onConfigError();
-	Config* configPtr;
-
+	void laodConfig();
+	
 	TCPAppSender tcpSender;
-
 	void onNewCommand(TCPAppSender::CommandType& command);
 };

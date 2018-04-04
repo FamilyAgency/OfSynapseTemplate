@@ -5,10 +5,13 @@ Timer::Timer()
 {
 	
 }
+
 Timer::~Timer()
 {
+
 }
-void Timer::start(const int & time)
+
+void Timer::start(int time)
 {
 	startTime = ofGetElapsedTimef();//ofGetElapsedTimeMillis();
 	endTime = startTime + time;

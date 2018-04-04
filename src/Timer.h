@@ -8,9 +8,10 @@ namespace synapse
 	public:
 		Timer();
 		~Timer();
-		void start(const int& time);
+		void start(int time);
 		ofEvent<void> timeOutEvent;
 		void update();
+
 	private:
 		float startTime;
 		float endTime;

@@ -17,6 +17,8 @@ namespace synapse
 
 		ofEvent<string> newMessageEvent;
 	private:
+		Config::SocketServer serverConfig;
+
 		string ip;
 		int port;
 		string delimiter;
@@ -27,6 +29,6 @@ namespace synapse
 		ofxTCPClient tcp;
 
 		void newMessage(const string& message);
-		void tryToReconnect();
+		void tryToConnect();
 	};
 }

@@ -10,14 +10,17 @@ namespace synapse
 	public:
 		ConfigController();
 		~ConfigController();
-		void init(string configPath);
+
+		void init(const string& configPath);
+
 		ofEvent<void> configSuccessEvent;
 		ofEvent<void> configErrorEvent;
-		Config* getConfig();
+
+		ConfigPtr getConfig();
+
 	private:
 		string configPath;
-
-		Config config;
+		ConfigPtr config;
 
 		ConfigLoader configLoader;
 		void onConfigLoadSuccess(string& rawConfig);
@@ -26,7 +29,6 @@ namespace synapse
 		ConfigParser configParser;
 		void onConfigParseSuccess();
 		void onConfigParseError();
-
 
 	protected:
 	};

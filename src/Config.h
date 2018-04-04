@@ -3,6 +3,8 @@
 
 namespace synapse
 {
+	typedef ofPtr<class Config> ConfigPtr;
+
 	class Config
 	{
 	public:
@@ -13,34 +15,40 @@ namespace synapse
 			int appId;
 			string logPath;
 		};
+
 		struct SocketServer
 		{
 			string ip;
 			int port;
 			bool autoConnect;
 			string delimiter;
+			float reconnectSeconds = 3;
 		};
+
 		struct Command
 		{
 			string metaName;
-			string actrion;
+			string actrion;			
 		};
-		typedef  vector<Command> Commands;
+
+		typedef vector<Command> Commands;
 
 		Config();
 		~Config();
 
-		void setAppData(const AppData& _appData);
-		void setScoketServer(const SocketServer& _socketServer);
-		void setCommands(const Commands& _commands);
-		AppData getAppData();
-		SocketServer getSocketServer();
-		Commands getCommands();
+		void setAppData(const AppData& appData);
+		void setScoketServer(const SocketServer& socketServer);
+		void setCommands(const Commands& commands);
+
+		AppData getAppData() const;
+		SocketServer getSocketServer() const;
+		Commands getCommands() const;
 
 	private:
 		AppData appData;
 		SocketServer socketServer;
 		Commands commands;
+
 	protected:
 	};
 }

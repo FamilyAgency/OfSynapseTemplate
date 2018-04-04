@@ -12,32 +12,32 @@ Config::~Config()
 
 }
 
-void Config::setAppData(const AppData& _appData)
+void Config::setAppData(const AppData& appData)
 {
-	appData = _appData;
+	this->appData = appData;
 }
 
-Config::AppData Config::getAppData()
+Config::AppData Config::getAppData() const
 {
 	return appData;
 }
 
-void Config::setScoketServer(const SocketServer& _socketServer)
+void Config::setScoketServer(const SocketServer& socketServer)
 {
-	socketServer = _socketServer;
+	this->socketServer = socketServer;
 }
 
-Config::SocketServer Config::getSocketServer()
+Config::SocketServer Config::getSocketServer() const
 {
 	return socketServer;
 }
 
-void Config::setCommands(const Commands & _commands)
+void Config::setCommands(const Commands & commands)
 {
-	commands = _commands;
+	this->commands = commands;
 }
 
-Config::Commands Config::getCommands()
+Config::Commands Config::getCommands() const
 {
 	return commands;
 }

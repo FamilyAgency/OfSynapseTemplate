@@ -12,26 +12,23 @@ Logger::Logger()
 
 }
 
-void Logger::init(const string& _logPath)
+void Logger::init(const string& logPath)
 {
-	logPath = _logPath;
+	this->logPath = logPath;
 	bool doesFileExist = logFile.doesFileExist(logPath, false);
 
-	if (doesFileExist)
-	{
-		logFile.open(logPath, ofFile::ReadWrite, false);
-	}
-	else
+	logFile.open(logPath, ofFile::ReadWrite, false);
+
+	if (!doesFileExist)
 	{
 		//file does not exist - create
-		logFile.open(logPath, ofFile::ReadWrite, false);
 		ofFile logFile(ofToDataPath(logPath));
 		logFile.create();
 	}
 	cout << "Curent log file: " << logPath << endl;
 }
 
-void Logger::log(const LogType& type, const string& message)
+void Logger::log(LogType type, const string& message)
 {
 	string logTypeText;
 	switch (type)
@@ -50,6 +47,7 @@ void Logger::log(const LogType& type, const string& message)
 	}
 	//bool doesFileExist = logFile.exists();
 	//cout << doesFileExist << endl;
+	
 	logFile << getDate() << logTypeText << message << endl;
 }
 

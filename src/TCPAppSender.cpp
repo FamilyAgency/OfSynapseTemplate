@@ -2,12 +2,12 @@
 using namespace synapse;
 
 TCPAppSender::TCPAppSender()
-{
-	ofAddListener(TCPClient::newMessageEvent, this, &TCPAppSender::onNewMessage);
+{	
 	commandMap.insert(pair<string, CommandType>("clientAuth",	CommandType::ClientAuth));
 	commandMap.insert(pair<string, CommandType>("keepAlive",	CommandType::KeepAlive));
 	commandMap.insert(pair<string, CommandType>("changeColor",	CommandType::ChangeColor));
 	commandMap.insert(pair<string, CommandType>("sayHello",		CommandType::SayHello));
+	ofAddListener(TCPClient::newMessageEvent, this, &TCPAppSender::onNewMessage);
 }
 
 TCPAppSender::~TCPAppSender()

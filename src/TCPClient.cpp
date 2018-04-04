@@ -1,27 +1,39 @@
 #include "TCPClient.h"
 using namespace synapse;
 
-TCPClient::TCPClient()
+TCPClient::TCPClient():
+	autoConnect(false),
+	isReconnecting(false)
 {
-	ofAddListener(reconnectTimer.timeOutEvent, this, &TCPClient::tryToReconnect);
+	ofAddListener(reconnectTimer.timeOutEvent, this, &TCPClient::tryToConnect);
 }
 
 TCPClient::~TCPClient()
 {
+
 }
 
 void TCPClient::connect(const Config::SocketServer& socketServer)
 {
+	this->serverConfig = serverConfig;
+
 	ip =			socketServer.ip;
 	port =			socketServer.port;
 	autoConnect =	socketServer.autoConnect;
 	delimiter =		socketServer.delimiter;
+
 	tcp.setMessageDelimiter(delimiter);
-	bool connected = tcp.setup(ip, port);
-	if (connected)
-	{
-		cout << "Connected to: " << ip << ":" << port << endl;
-	}
+
+	////isReconnecting = true;
+	//bool connected = tcp.setup(ip, port);
+
+	//if (connected)
+	//{
+	//	//isReconnecting = false;
+	//	cout << "Connected to: " << ip << ":" << port << endl;
+	//}
+
+	tryToConnect();
 }
 
 void TCPClient::update()
@@ -29,17 +41,17 @@ void TCPClient::update()
 	//cout << ".";
 	if (tcp.isConnected())
 	{
-		string str = tcp.receive();
-		if (str.length() > 0)
+		string message = tcp.receive();
+		if (message.length() > 0)
 		{
-			newMessage(str);
+			newMessage(message);
 		}
 	}
-	else
+	else if(autoConnect)
 	{
 		if (!isReconnecting)
 		{
-			tryToReconnect();
+			tryToConnect();
 		}
 		else
 		{
@@ -48,27 +60,25 @@ void TCPClient::update()
 	}
 }
 
-void TCPClient::newMessage(const string& _message)
+void TCPClient::newMessage(const string& message)
 {
-	string message = _message;
 	cout << "New TCP message: " << message << endl;
-	newMessageEvent.notify(this, message);
+	newMessageEvent.notify(this, const_cast<string&>(message));
 }
 
-
-void TCPClient::tryToReconnect()
+void TCPClient::tryToConnect()
 {
 	if (!tcp.isConnected())
 	{
-		bool reconnected = tcp.setup(ip, port, false);
-		if (reconnected)
+		bool connected = tcp.setup(ip, port, false);
+		if (connected)
 		{
-			cout << "Reconnected!" << endl;
+			cout << "Connected!" << endl;
 			isReconnecting = false;
 		}
 		else
 		{
-			reconnectTimer.start(3);
+			reconnectTimer.start(serverConfig.reconnectSeconds);
 			isReconnecting = true;
 		}
 	}

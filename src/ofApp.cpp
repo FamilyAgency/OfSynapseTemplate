@@ -4,13 +4,6 @@ using namespace synapse;
 void ofApp::setup()
 {
 	cout << "setup " << endl;
-	if (isConfigReady)
-	{
-		logger().log(Logger::LogType::Message, "lol");
-		logger().log(Logger::LogType::Error, "lol2");
-		tcpSender.connect(configPtr->getSocketServer());
-		ofAddListener(tcpSender.newCommandEvent, this, &ofApp::onNewCommand);
-	}
 }
 
 void ofApp::setCommandLineArgs(const vector<string>& args)
@@ -21,8 +14,15 @@ void ofApp::setCommandLineArgs(const vector<string>& args)
 		for (size_t i = 0; i < args.size(); i++)
 		{
 			// find config and set configPath
-		}
+			//configPath
+		}		
 	}
+
+	laodConfig();	
+}
+
+void ofApp::laodConfig()
+{
 	ofAddListener(configController.configSuccessEvent, this, &ofApp::onConfigSuccess);
 	ofAddListener(configController.configErrorEvent, this, &ofApp::onConfigError);
 
@@ -31,15 +31,21 @@ void ofApp::setCommandLineArgs(const vector<string>& args)
 
 void ofApp::onConfigSuccess()
 {
-	isConfigReady = true;
+	// entry point
 	configPtr = configController.getConfig();
+
 	logger().init(configPtr->getAppData().logPath);
-}
-void ofApp::onConfigError()
-{
-	isConfigReady = false;
+	logger().log(Logger::LogType::Message, "lol");
+	logger().log(Logger::LogType::Error, "lol2");
+
+	ofAddListener(tcpSender.newCommandEvent, this, &ofApp::onNewCommand);
+	tcpSender.connect(configPtr->getSocketServer());	
 }
 
+void ofApp::onConfigError()
+{
+	//error message
+}
 
 void ofApp::onNewCommand(TCPAppSender::CommandType& command)
 {
@@ -47,16 +53,14 @@ void ofApp::onNewCommand(TCPAppSender::CommandType& command)
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-	if (isConfigReady)
-	{
-		tcpSender.update();
-	}
-	
+void ofApp::update()
+{
+	tcpSender.update();
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw()
+{
 	ofDrawCircle(250, sin(ofGetElapsedTimef()) * 50+250, 0, 50);
 }
 
