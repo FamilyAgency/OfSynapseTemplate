@@ -1,17 +1,17 @@
 #pragma once
 #include "ofMain.h"
-#include "Network/TCP/TCPClient.h"
+#include "TCPClient.h"
 #include "Config/Config.h"
 #include "ofxNetwork\src\ofxNetwork.h"
 #include "ofxJSON.h"
 
 namespace synapse
 {
-	class TCPAppSender : public synapse::TCPClient
+	class TCPAppMessageClient : public synapse::TCPClient
 	{
 	public:
-		TCPAppSender();
-		virtual ~TCPAppSender();
+		TCPAppMessageClient();
+		virtual ~TCPAppMessageClient();
 		enum class CommandType
 		{
 			ClientAuth,
@@ -19,10 +19,10 @@ namespace synapse
 			ChangeColor,
 			SayHello
 		};
-		ofEvent<TCPAppSender::CommandType> newCommandEvent;
-	private:
-		map<string, TCPAppSender::CommandType> commandMap;
+		ofEvent<CommandType> newCommandEvent;
 
+	private:
+		map<string, CommandType> commandMap;
 		void onNewMessage(string& message);
 	};
 }

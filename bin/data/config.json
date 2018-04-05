@@ -2,12 +2,12 @@
   "version" : "1.0",
   "appTypeId": 1,
   "appId": 1,
-  "logPath": "B:\\FamilyAgencyBack\\OfTemplateSynapse\\bin\\data\\logs\\log.txt",
+  "logPath": "logs\\log.txt",
   "socketServer":
   {
-      "ip" : "192.168.88.100",
-      "port": 8085,
-      "autoConnect": false,
+      "ip" : "192.168.88.89",
+      "port": 8080,
+      "autoConnect": true,
       "delimeter" :"[/TCP]"
   },
   "commands":

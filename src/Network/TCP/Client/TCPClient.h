@@ -2,11 +2,10 @@
 #include "ofMain.h"
 #include "Config/Config.h"
 #include "ofxNetwork\src\ofxNetwork.h"
-#include "Utilities/Timer.h"
 
 namespace synapse
 {
-	class TCPClient
+	class TCPClient : public ofThread
 	{
 	public:
 		TCPClient();
@@ -16,19 +15,26 @@ namespace synapse
 		void connect(const synapse::Config::SocketServer& socketServer);
 
 		ofEvent<string> newMessageEvent;
+	protected:
+		ofxTCPClient tcp;
+
 	private:
 		Config::SocketServer serverConfig;
 
 		string ip;
 		int port;
 		string delimiter;
-
 		bool autoConnect;
-		bool isReconnecting;
-		Timer reconnectTimer;
-		ofxTCPClient tcp;
+		float reconnectMills;
+
+		string message;
+		bool newMessageIsCome;
+		bool firstRun = true;
+		
 
 		void newMessage(const string& message);
 		void tryToConnect();
+
+		void threadedFunction();
 	};
 }

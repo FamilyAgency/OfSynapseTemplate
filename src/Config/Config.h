@@ -22,7 +22,7 @@ namespace synapse
 			int port;
 			bool autoConnect;
 			string delimiter;
-			float reconnectSeconds = 3;
+			float reconnectMills = 3000;
 		};
 
 		struct Command

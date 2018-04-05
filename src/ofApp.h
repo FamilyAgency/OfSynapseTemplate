@@ -4,14 +4,11 @@
 #include "Config/ConfigController.h"
 #include "Config/Config.h"
 #include "Utilities/Logger.h"
-#include "Network/TCP/TCPAppSender.h"
-#include "Network/TCP/TCPClient.h"
-
+#include "Network/TCP/Client/TCPAppMessageClient.h"
 
 using namespace synapse;
 class ofApp : public ofBaseApp
 {
-
 public:
 	void setup();
 	void update();
@@ -30,7 +27,7 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	void setCommandLineArgs(const vector<string>& args);
-	string configPath = "B:\\FamilyAgencyBack\\OfTemplateSynapse\\bin\\data\\config.json";
+	string configPath = "config.json";
 	
 	ConfigPtr configPtr;
 	ConfigController configController;
@@ -38,6 +35,6 @@ public:
 	void onConfigError();
 	void laodConfig();
 	
-	TCPAppSender tcpSender;
-	void onNewCommand(TCPAppSender::CommandType& command);
+	TCPAppMessageClient tcpAppMessageClient;
+	void onNewCommand(TCPAppMessageClient::CommandType& command);
 };

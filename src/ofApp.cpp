@@ -38,8 +38,8 @@ void ofApp::onConfigSuccess()
 	logger().log(Logger::LogType::Message, "lol");
 	logger().log(Logger::LogType::Error, "lol2");
 
-	ofAddListener(tcpSender.newCommandEvent, this, &ofApp::onNewCommand);
-	tcpSender.connect(configPtr->getSocketServer());	
+	ofAddListener(tcpAppMessageClient.newCommandEvent, this, &ofApp::onNewCommand);
+	tcpAppMessageClient.connect(configPtr->getSocketServer());
 }
 
 void ofApp::onConfigError()
@@ -47,7 +47,7 @@ void ofApp::onConfigError()
 	//error message
 }
 
-void ofApp::onNewCommand(TCPAppSender::CommandType& command)
+void ofApp::onNewCommand(TCPAppMessageClient::CommandType& command)
 {
 
 }
@@ -55,7 +55,7 @@ void ofApp::onNewCommand(TCPAppSender::CommandType& command)
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	tcpSender.update();
+	tcpAppMessageClient.update();
 }
 
 //--------------------------------------------------------------
