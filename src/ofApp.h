@@ -27,7 +27,7 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	void setCommandLineArgs(const vector<string>& args);
-	string configPath = "config.json";
+	string debugString, configPath = "config.json";
 	
 	ConfigPtr configPtr;
 	ConfigController configController;

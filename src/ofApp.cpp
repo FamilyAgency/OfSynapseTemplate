@@ -11,10 +11,18 @@ void ofApp::setCommandLineArgs(const vector<string>& args)
 	cout << "args printed " << endl;
 	if (args.size() > 1)
 	{
+		
+		
 		for (size_t i = 0; i < args.size(); i++)
 		{
-			// find config and set configPath
-			//configPath
+			auto data = tools().splitString(args[i], '=');
+			if (data.size() > 1)
+			{
+				if (data[0].find("config") != -1)
+				{
+					configPath = data[1];
+				}				
+			}			
 		}		
 	}
 
@@ -35,8 +43,8 @@ void ofApp::onConfigSuccess()
 	configPtr = configController.getConfig();
 
 	logger().init(configPtr->getAppData().logPath);
-	logger().log(Logger::LogType::Message, "lol");
-	logger().log(Logger::LogType::Error, "lol2");
+	logger().log(Logger::LogType::Message, "test91");
+	logger().log(Logger::LogType::Error, "test92");
 
 	ofAddListener(tcpAppMessageClient.newCommandEvent, this, &ofApp::onNewCommand);
 	tcpAppMessageClient.connect(configPtr->getSocketServer());
@@ -62,6 +70,7 @@ void ofApp::update()
 void ofApp::draw()
 {
 	ofDrawCircle(250, sin(ofGetElapsedTimef()) * 50+250, 0, 50);
+	ofDrawBitmapString(debugString, 10, 10);
 }
 
 //--------------------------------------------------------------
