@@ -38,7 +38,7 @@ ConfigPtr ConfigController::getConfig()
 
 void ConfigController::onConfigLoadError()
 {
-	configSuccessEvent.notify(this);
+	configErrorEvent.notify(this);
 }
 
 void ConfigController::onConfigParseError()
