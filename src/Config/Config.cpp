@@ -12,6 +12,17 @@ Config::~Config()
 
 }
 
+
+void Config::setFullscreen(bool value)
+{
+	isFullscreen = value;
+}
+
+bool Config::getFullscreen() const
+{
+	return isFullscreen;
+}
+
 void Config::setAppData(const AppData& appData)
 {
 	this->appData = appData;

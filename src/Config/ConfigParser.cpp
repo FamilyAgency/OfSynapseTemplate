@@ -17,6 +17,7 @@ void ConfigParser::parse(ConfigPtr config, const string& configString)
 
 	if (parsingSuccessful)
 	{
+		config->setFullscreen(configResult["fullscreen"].asBool());
 		Config::AppData configAppData;
 		configAppData.version = configResult["version"].asString();
 		configAppData.appTypeId = configResult["appTypeId"].asInt();

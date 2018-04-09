@@ -44,10 +44,14 @@ namespace synapse
 		SocketServer getSocketServer() const;
 		Commands getCommands() const;
 
+		void setFullscreen(bool value);
+		bool getFullscreen() const;
+
 	private:
 		AppData appData;
 		SocketServer socketServer;
 		Commands commands;
+		bool isFullscreen = false;
 
 	protected:
 	};

@@ -3,7 +3,7 @@ using namespace synapse;
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	cout << "setup " << endl;
+	cout << "setup " << endl;	
 }
 
 void ofApp::setCommandLineArgs(const vector<string>& args)
@@ -42,6 +42,8 @@ void ofApp::onConfigSuccess()
 	// entry point
 	configPtr = configController.getConfig();
 
+	ofSetFullscreen(configPtr->getFullscreen());
+
 	logger().init(configPtr->getAppData().logPath);
 	logger().log(Logger::LogType::Message, "test91");
 	logger().log(Logger::LogType::Error, "test92");
@@ -76,11 +78,13 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
+
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
+void ofApp::keyReleased(int key)
+{
+	//cout << key << endl;
 }
 
 //--------------------------------------------------------------
