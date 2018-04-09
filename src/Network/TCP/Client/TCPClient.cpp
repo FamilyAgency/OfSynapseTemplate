@@ -7,17 +7,18 @@ TCPClient::TCPClient(): autoConnect(false), newMessageIsCome(false)
 	
 }
 
-void TCPClient::connect(const Config::SocketServer& socketServer)
+void TCPClient::connect(ConfigPtr config)
 {
 	lock();	
 	
-	this->serverConfig = serverConfig;
+	this->config = config;
+	auto socketServer = config->getSocketServer();	
 
-	ip =			socketServer.ip;
-	port =			socketServer.port;
-	autoConnect =	socketServer.autoConnect;
-	delimiter =		socketServer.delimiter;
-	reconnectMills =		socketServer.reconnectMills;
+	ip = socketServer.ip;
+	port = socketServer.port;
+	autoConnect = socketServer.autoConnect;
+	delimiter = socketServer.delimiter;
+	reconnectMills = socketServer.reconnectMills;
 	tcp.setMessageDelimiter(delimiter);	
 
 	unlock();

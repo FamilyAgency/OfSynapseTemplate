@@ -12,15 +12,15 @@ namespace synapse
 		~TCPClient();
 
 		void update();
-		void connect(const synapse::Config::SocketServer& socketServer);
+		void connect(ConfigPtr socketServer);
 
 		ofEvent<string> newMessageEvent;
+
 	protected:
 		ofxTCPClient tcp;
+		ConfigPtr config;
 
 	private:
-		Config::SocketServer serverConfig;
-
 		string ip;
 		int port;
 		string delimiter;

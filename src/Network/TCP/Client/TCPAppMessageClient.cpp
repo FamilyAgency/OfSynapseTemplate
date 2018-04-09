@@ -21,23 +21,36 @@ void TCPAppMessageClient::onNewMessage(string& message)
 	cout << "message  " << message;
 	ofxJSONElement messageResult;
 	bool parseSeuccess = messageResult.parse(message);
+
 	if (parseSeuccess)
 	{
-		//cout << messageResult["command"]["type"].asString()<< endl;
 		CommandType newCommandType = commandMap[messageResult["command"]["type"].asString()];
+
 		switch (newCommandType)
 		{
 		case CommandType::ClientAuth:
-			cout << "clientAuth" << endl;			
-			tcp.send("{\"response\":{\"type\":\"clientAuth\",\"appTypeId\":1,\"appId\":202}}");
+			sendAuthMessage();
 			break;
+
 		case CommandType::KeepAlive:
 			break;
+
 		case CommandType::ChangeColor:
 			break;
+
 		case CommandType::SayHello:
 			break;
 		}
 		newCommandEvent.notify(this, newCommandType);
 	}
 }
+
+void TCPAppMessageClient::sendAuthMessage()
+{
+	auto appId = to_string(config->getAppData().appId);
+	auto appTypeId = to_string(config->getAppData().appTypeId);
+	string authMessage = "{\"response\":{\"type\":\"clientAuth\",\"appTypeId\":" + appTypeId + ",\"appId\":" + appId + "}}";
+
+	tcp.send(authMessage);
+}
+

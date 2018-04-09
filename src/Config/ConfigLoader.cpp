@@ -17,7 +17,7 @@ void ConfigLoader::load(const string& param, LoadType type)
 	{
 		if (param.length() > 0)
 		{
-			setConfigPath(param);
+			configPath = param;
 			configBuffer = ofBufferFromFile(configPath);
 			string configText = configBuffer.getText();
 			loadSuccessEvent.notify(this, configText);
@@ -29,9 +29,4 @@ void ConfigLoader::load(const string& param, LoadType type)
 
 		//@TODO: notify file error
 	}	
-}
-
-void ConfigLoader::setConfigPath(const string& param)
-{
-	configPath = param;
 }

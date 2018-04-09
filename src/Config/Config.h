@@ -28,7 +28,7 @@ namespace synapse
 		struct Command
 		{
 			string metaName;
-			string actrion;			
+			string action;			
 		};
 
 		typedef vector<Command> Commands;

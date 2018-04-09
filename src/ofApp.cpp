@@ -47,7 +47,7 @@ void ofApp::onConfigSuccess()
 	logger().log(Logger::LogType::Error, "test92");
 
 	ofAddListener(tcpAppMessageClient.newCommandEvent, this, &ofApp::onNewCommand);
-	tcpAppMessageClient.connect(configPtr->getSocketServer());
+	tcpAppMessageClient.connect(configPtr);
 }
 
 void ofApp::onConfigError()

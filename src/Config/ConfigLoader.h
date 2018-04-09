@@ -10,6 +10,7 @@ namespace synapse
 		{
 			None,
 			LocalFile,
+			ResourceFile,
 			Url
 		};
 
@@ -17,8 +18,7 @@ namespace synapse
 		~ConfigLoader();
 
 		void load(const string& param, LoadType type = LoadType::LocalFile);
-		void setConfigPath(const string& param);
-
+	
 		ofEvent<string> loadSuccessEvent;
 		ofEvent<void> loadErrorEvent;
 

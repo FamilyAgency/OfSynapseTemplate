@@ -36,7 +36,7 @@ void ConfigParser::parse(ConfigPtr config, const string& configString)
 		{
 			Config::Command tempCommand;
 			tempCommand.metaName = configResult["commands"][i]["metaName"].asString();
-			tempCommand.actrion = configResult["commands"][i]["action"].asString();
+			tempCommand.action = configResult["commands"][i]["action"].asString();
 			configCommands.push_back(tempCommand);
 		}
 		config->setCommands(configCommands);

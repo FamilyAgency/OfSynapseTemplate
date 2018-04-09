@@ -1,20 +1,31 @@
 {
-  "version" : "1.0",
-  "appTypeId": 1,
-  "appId": 1,
-  "logPath": "logs\\log.txt",
-  "socketServer":
-  {
-      "ip" : "192.168.88.89",
-      "port": 8080,
-      "autoConnect": true,
-      "delimeter" :"[/TCP]"
-  },
-  "commands":
-  [
-    {"metaName": "clientAuth", "action": "{\"command\":{\"type\":\"clientAuth\"}}"},
-    {"metaName": "keepAlive", "action": "{\"command\":{\"type\":\"keepAlive\",\"enabled\":true,\"ms\":1000}}"},
-    {"metaName": "changeColor", "action": "{\"command\":{\"type\":\"changeColor\",\"color\":\"0xff0000\"}}"},
-    {"metaName": "sayHello", "action": "{\"command\":\"sayHello\"}"}
-  ]
+    "appId": 134,
+    "appTypeId": 1,
+    "commands": [
+        {
+            "action": "{\"command\":{\"type\":\"clientAuth\"}}",
+            "metaName": "clientAuth"
+        },
+        {
+            "action": "{\"command\":{\"type\":\"keepAlive\",\"enabled\":true,\"ms\":1000}}",
+            "metaName": "keepAlive"
+        },
+        {
+            "action": "{\"command\":{\"type\":\"changeColor\",\"color\":\"0xff0000\"}}",
+            "metaName": "changeColor"
+        },
+        {
+            "action": "{\"command\":\"sayHello\"}",
+            "metaName": "sayHello"
+        }
+    ],
+    "logPath": "c:\\projects\\Openframeworks\\of_v0.9.8_vs_release\\apps\\myApps\\OfTemplateSynapse\\bin\\data\\logs\\log.txt",
+    "socketClient": null,
+    "socketServer": {
+        "autoConnect": true,
+        "delimeter": "[/TCP]",
+        "ip": "localhost",
+        "port": 80
+    },
+    "version": "1.0"
 }

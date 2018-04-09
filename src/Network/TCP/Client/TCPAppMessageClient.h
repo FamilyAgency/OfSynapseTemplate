@@ -24,6 +24,8 @@ namespace synapse
 	private:
 		map<string, CommandType> commandMap;
 		void onNewMessage(string& message);
+
+		void sendAuthMessage();
 	};
 }
 
