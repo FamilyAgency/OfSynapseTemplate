@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "Config/Config.h"
-#include "Utilities/Tools.h"
+#include "tools/Tools.h"
 
 namespace synapse
 {

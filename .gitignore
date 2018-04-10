@@ -10,3 +10,9 @@ obj/
 ipch/
 bin/
 !bin/data/config.json
+*.sln
+*.user
+*.filters
+*.vcxproj
+icon.rc
+addons.make

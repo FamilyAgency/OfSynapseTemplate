@@ -10,9 +10,7 @@ void ofApp::setCommandLineArgs(const vector<string>& args)
 {
 	cout << "args printed " << endl;
 	if (args.size() > 1)
-	{
-		
-		
+	{		
 		for (size_t i = 0; i < args.size(); i++)
 		{
 			auto data = tools().splitString(args[i], '=');
@@ -71,7 +69,7 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	ofDrawCircle(250, sin(ofGetElapsedTimef()) * 50+250, 0, 50);
+	ofDrawCircle(250, sin(ofGetElapsedTimef()) * 50 + 250, 0, 50);
 	ofDrawBitmapString(debugString, 10, 10);
 }
 

@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "Config/ConfigController.h"
 #include "Config/Config.h"
-#include "Utilities/Logger.h"
+#include "tools/logger/Logger.h"
 #include "Network/TCP/Client/TCPAppMessageClient.h"
 
 using namespace synapse;

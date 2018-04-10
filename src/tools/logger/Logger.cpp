@@ -1,4 +1,5 @@
-#include "Utilities/Logger.h"
+#include "Logger.h"
+
 using namespace synapse;
 
 Logger& Logger::getInstance()
