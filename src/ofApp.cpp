@@ -1,16 +1,11 @@
 #include "ofApp.h"
 using namespace synapse;
-//--------------------------------------------------------------
-void ofApp::setup()
-{
-	cout << "setup " << endl;	
-}
 
 void ofApp::setCommandLineArgs(const vector<string>& args)
 {
 	cout << "args printed " << endl;
 	if (args.size() > 1)
-	{		
+	{
 		for (size_t i = 0; i < args.size(); i++)
 		{
 			auto data = tools().splitString(args[i], '=');
@@ -19,15 +14,21 @@ void ofApp::setCommandLineArgs(const vector<string>& args)
 				if (data[0].find("config") != -1)
 				{
 					configPath = data[1];
-				}				
-			}			
-		}		
+				}
+			}
+		}
 	}
 
-	laodConfig();	
+	loadConfig();
 }
 
-void ofApp::laodConfig()
+//--------------------------------------------------------------
+void ofApp::setup()
+{
+	cout << "setup " << endl;	
+}
+
+void ofApp::loadConfig()
 {
 	ofAddListener(configController.configSuccessEvent, this, &ofApp::onConfigSuccess);
 	ofAddListener(configController.configErrorEvent, this, &ofApp::onConfigError);
@@ -39,20 +40,25 @@ void ofApp::onConfigSuccess()
 {
 	// entry point
 	configPtr = configController.getConfig();
-
-	ofSetFullscreen(configPtr->getFullscreen());
-
-	logger().init(configPtr->getAppData().logPath);
-	logger().log(Logger::LogType::Message, "test91");
-	logger().log(Logger::LogType::Error, "test92");
-
-	ofAddListener(tcpAppMessageClient.newCommandEvent, this, &ofApp::onNewCommand);
-	tcpAppMessageClient.connect(configPtr);
+	startApp();
 }
 
 void ofApp::onConfigError()
 {
-	//error message
+	// error message
+}
+
+//--------------------------------------------------------------
+void ofApp::startApp()
+{
+	ofSetFullscreen(configPtr->getFullscreen());
+
+	logger().init(configPtr->getAppData().logPath);
+	logger().log(Logger::LogType::Message, "message test");
+	logger().log(Logger::LogType::Error, "error message test");
+
+	ofAddListener(tcpAppMessageClient.newCommandEvent, this, &ofApp::onNewCommand);
+	tcpAppMessageClient.connect(configPtr);
 }
 
 void ofApp::onNewCommand(TCPAppMessageClient::CommandType& command)

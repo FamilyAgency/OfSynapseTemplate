@@ -15,7 +15,7 @@ namespace synapse
 		enum class CommandType
 		{
 			ClientAuth,
-			KeepAlive,
+			KeepAliveToggle,
 			ChangeColor,
 			SayHello
 		};

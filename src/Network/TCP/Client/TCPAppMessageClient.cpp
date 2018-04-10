@@ -5,7 +5,7 @@ using namespace synapse;
 TCPAppMessageClient::TCPAppMessageClient()
 {	
 	commandMap.insert(pair<string, CommandType>("clientAuth",	CommandType::ClientAuth));
-	commandMap.insert(pair<string, CommandType>("keepAlive",	CommandType::KeepAlive));
+	commandMap.insert(pair<string, CommandType>("keepAliveToggle",	CommandType::KeepAliveToggle));
 	commandMap.insert(pair<string, CommandType>("changeColor",	CommandType::ChangeColor));
 	commandMap.insert(pair<string, CommandType>("sayHello",		CommandType::SayHello));
 	ofAddListener(TCPClient::newMessageEvent, this, &TCPAppMessageClient::onNewMessage);
@@ -32,7 +32,7 @@ void TCPAppMessageClient::onNewMessage(string& message)
 			sendAuthMessage();
 			break;
 
-		case CommandType::KeepAlive:
+		case CommandType::KeepAliveToggle:
 			break;
 
 		case CommandType::ChangeColor:

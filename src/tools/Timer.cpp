@@ -1,4 +1,4 @@
-#include "Utilities/Timer.h"
+#include "Timer.h"
 using namespace synapse;
 
 Timer::Timer()

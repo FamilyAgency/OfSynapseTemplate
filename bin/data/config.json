@@ -20,7 +20,6 @@
         }
     ],
     "logPath": "c:\\projects\\Openframeworks\\of_v0.9.8_vs_release\\apps\\myApps\\OfTemplateSynapse\\bin\\data\\logs\\log.txt",
-    "socketClient": null,
     "socketServer": {
         "autoConnect": true,
         "delimeter": "[/TCP]",

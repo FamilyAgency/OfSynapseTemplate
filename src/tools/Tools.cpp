@@ -1,4 +1,4 @@
-#include "Utilities/Tools.h"
+#include "Tools.h"
 using namespace synapse;
 
 Tools & synapse::Tools::getInstance()

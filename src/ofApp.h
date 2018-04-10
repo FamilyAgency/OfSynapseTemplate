@@ -6,7 +6,7 @@
 #include "tools/logger/Logger.h"
 #include "Network/TCP/Client/TCPAppMessageClient.h"
 
-using namespace synapse;
+
 class ofApp : public ofBaseApp
 {
 public:
@@ -29,12 +29,14 @@ public:
 	void setCommandLineArgs(const vector<string>& args);
 	string debugString, configPath = "config.json";
 	
-	ConfigPtr configPtr;
-	ConfigController configController;
+	synapse::ConfigPtr configPtr;
+	synapse::ConfigController configController;
 	void onConfigSuccess();
 	void onConfigError();
-	void laodConfig();
+	void loadConfig();
+
+	void startApp();
 	
-	TCPAppMessageClient tcpAppMessageClient;
-	void onNewCommand(TCPAppMessageClient::CommandType& command);
+	synapse::TCPAppMessageClient tcpAppMessageClient;
+	void onNewCommand(synapse::TCPAppMessageClient::CommandType& command);
 };
