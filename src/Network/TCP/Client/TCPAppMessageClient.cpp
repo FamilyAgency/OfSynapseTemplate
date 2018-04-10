@@ -4,10 +4,11 @@ using namespace synapse;
 
 TCPAppMessageClient::TCPAppMessageClient()
 {	
-	commandMap.insert(pair<string, CommandType>("clientAuth",	CommandType::ClientAuth));
+	commandMap.insert(pair<string, CommandType>("clientAuth",		CommandType::ClientAuth));
 	commandMap.insert(pair<string, CommandType>("keepAliveToggle",	CommandType::KeepAliveToggle));
-	commandMap.insert(pair<string, CommandType>("changeColor",	CommandType::ChangeColor));
-	commandMap.insert(pair<string, CommandType>("sayHello",		CommandType::SayHello));
+	commandMap.insert(pair<string, CommandType>("changeColor",		CommandType::ChangeColor));
+	commandMap.insert(pair<string, CommandType>("sayHello",			CommandType::SayHello));
+	commandMap.insert(pair<string, CommandType>("getInfo",			CommandType::GetInfo));
 	ofAddListener(TCPClient::newMessageEvent, this, &TCPAppMessageClient::onNewMessage);
 }
 
@@ -40,6 +41,10 @@ void TCPAppMessageClient::onNewMessage(string& message)
 
 		case CommandType::SayHello:
 			break;
+
+		case CommandType::GetInfo:
+			sendAppInfo();
+			break;
 		}
 		newCommandEvent.notify(this, newCommandType);
 	}
@@ -52,5 +57,10 @@ void TCPAppMessageClient::sendAuthMessage()
 	string authMessage = "{\"response\":{\"type\":\"clientAuth\",\"appTypeId\":" + appTypeId + ",\"appId\":" + appId + "}}";
 
 	tcp.send(authMessage);
+}
+
+void TCPAppMessageClient::sendAppInfo()
+{
+
 }
 

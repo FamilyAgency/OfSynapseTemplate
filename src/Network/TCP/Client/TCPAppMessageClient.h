@@ -17,7 +17,8 @@ namespace synapse
 			ClientAuth,
 			KeepAliveToggle,
 			ChangeColor,
-			SayHello
+			SayHello,
+			GetInfo
 		};
 		ofEvent<CommandType> newCommandEvent;
 
@@ -26,6 +27,7 @@ namespace synapse
 		void onNewMessage(string& message);
 
 		void sendAuthMessage();
+		void sendAppInfo();
 	};
 }
 
